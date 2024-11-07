@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import data from "./data/database.json";
 import FilterBar from "./components/FilterBar";
 import PriceIndicator from "./components/PriceIndicator";
+import DashboardCharts from "./components/DashboardCharts";
 
 function App() {
   const [dashboardData, setDashboardData] = useState([]);
@@ -38,6 +39,7 @@ function App() {
       <h1>Tableau de Bord Interactif</h1>
       <FilterBar filters={filters} setFilters={setFilters} />
       <PriceIndicator data={dashboardData} />
+      <DashboardCharts data={dashboardData} />
       <pre>{JSON.stringify(dashboardData, null, 2)}</pre>
     </div>
   );
