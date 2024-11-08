@@ -1,7 +1,8 @@
-/* Style de base pour le tableau de bord */
+/* Structure de base */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff; /* Fond blanc */
+  color: #333333; /* Texte gris foncé */
   margin: 0;
   padding: 0;
 }
@@ -12,85 +13,198 @@ body {
   padding: 20px;
 }
 
-h1 {
+/* Header */
+header {
   text-align: center;
-  color: #333;
+  color: #00a651; /* Vert vif */
+  font-size: 2rem;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-/* Mise en page pour les sections */
-.dashboard {
+/* Contenu principal */
+.content {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.main-content {
+  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.filter-bar,
-.price-indicator,
-.charts {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Barre de filtres */
-.filter-bar label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-.filter-bar select,
-.filter-bar input[type="number"],
-.filter-bar input[type="checkbox"] {
-  margin-top: 5px;
-  padding: 8px;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-/* Indicateur de prix */
+/* Price Indicator Section */
 .price-indicator {
-  text-align: center;
-  color: #555;
+  background-color: #f0f0f0; /* Gris très clair pour contraste sur fond blanc */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.price-indicator h2 {
+  color: #00a651; /* Vert vif */
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 
 .price-indicator p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 8px 0;
+  color: #333333; /* Texte gris foncé */
 }
 
-/* Graphiques */
-.charts {
+/* Charts Section */
+.dashboard-charts {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f0f0; /* Gris clair pour contraste */
+  padding: 10px;
+  padding-bottom: 50px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Titre des statistiques */
+.dashboard-charts h2 {
+  color: #00a651; /* Vert vif */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Conteneur pour aligner les graphiques côte à côte */
+.charts-row {
+  display: flex;
   gap: 20px;
   justify-content: center;
+  width: 100%;
 }
 
+/* Conteneurs individuels pour chaque graphique */
 .chart-container {
-  flex: 1 1 45%;
-  max-width: 500px;
-  min-width: 300px;
+  flex: 1;
+  max-width: 300px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .chart-container h3 {
-  text-align: center;
-  color: #333;
   margin-bottom: 10px;
+  color: #333333; /* Texte gris foncé */
+  font-size: 1.1rem;
 }
 
-/* Adaptabilité pour mobile */
+/* Barre des filtres */
+.sidebar {
+  flex: 1;
+  background-color: #f0f0f0; /* Gris clair pour contraste */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.filter-bar label {
+  display: block;
+  color: #00a651; /* Vert vif */
+  font-weight: 500;
+}
+
+.filter-bar select,
+.filter-bar input[type="number"] {
+  width: 100%;
+  max-width: 250px;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #ffffff; /* Fond blanc pour inputs */
+  color: #333333; /* Texte gris foncé */
+  box-sizing: border-box;
+}
+
+.filter-bar select:focus,
+.filter-bar input[type="number"]:focus {
+  outline: none;
+  border-color: #00a651; /* Vert vif pour focus */
+  box-shadow: 0 0 8px #00a651;
+}
+
+/* Affichage des données JSON */
+.data-display {
+  background-color: #f0f0f0; /* Gris clair pour contraste */
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+  color: #00a651; /* Vert vif */
+}
+
+.data-display pre {
+  background-color: #ffffff; /* Fond blanc */
+  padding: 10px;
+  border-radius: 8px;
+  overflow: auto;
+  color: #333333; /* Texte gris foncé */
+}
+
+/* Style du tableau de données */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.data-table th {
+  background-color: #f0f0f0; /* Gris clair */
+  color: #00a651; /* Vert vif */
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #ffffff; /* Fond blanc pour alternance */
+}
+
+.data-table tr:hover {
+  background-color: #f7f7f7; /* Gris très léger pour effet de survol */
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .charts {
+  .content {
     flex-direction: column;
-    align-items: center;
   }
 
-  .chart-container {
+  .sidebar,
+  .main-content {
     width: 100%;
+  }
+
+  .filter-bar {
+    grid-template-columns: 1fr;
+  }
+  .charts-row {
+    flex-direction: column;
   }
 }

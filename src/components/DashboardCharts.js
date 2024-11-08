@@ -24,7 +24,7 @@ function DashboardCharts({ data }) {
       {
         label: "Nombre par saison",
         data: Object.values(saisonCounts),
-        backgroundColor: ["#4caf50", "#2196f3", "#ff9800", "#f44336"],
+        backgroundColor: ["#006400", "#008000", "#00a651", "#00cc78"],
       },
     ],
   };
@@ -41,7 +41,7 @@ function DashboardCharts({ data }) {
       {
         label: "Répartition des niveaux",
         data: Object.values(niveauCounts),
-        backgroundColor: ["#8e44ad", "#3498db", "#2ecc71"],
+        backgroundColor: ["#006400", "#008000", "#00a651", "#00cc78"],
       },
     ],
   };
@@ -49,13 +49,15 @@ function DashboardCharts({ data }) {
   return (
     <div className="dashboard-charts">
       <h2>Statistiques</h2>
-      <div style={{ width: "45%", display: "inline-block" }}>
-        <h3>Nombre par saison</h3>
-        <Bar data={barData} />
-      </div>
-      <div style={{ width: "45%", display: "inline-block", marginLeft: "5%" }}>
-        <h3>Répartition des niveaux</h3>
-        <Pie data={pieData} />
+      <div className="charts-row">
+        <div className="chart-container">
+          <h3>Nombre par saison</h3>
+          <Bar data={barData} height={250} />
+        </div>
+        <div className="chart-container">
+          <h3>Répartition des niveaux</h3>
+          <Pie data={pieData} height={250} />
+        </div>
       </div>
     </div>
   );

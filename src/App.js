@@ -3,6 +3,7 @@ import data from "./data/database.json";
 import FilterBar from "./components/FilterBar";
 import PriceIndicator from "./components/PriceIndicator";
 import DashboardCharts from "./components/DashboardCharts";
+import DataTable from "./components/DataTable";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   const [filters, setFilters] = useState({
     saison: "",
     niveau: "",
+    passe: "",
     prixMin: "",
     prixMax: "",
     ageMin: "",
@@ -23,6 +25,7 @@ function App() {
       return (
         (filters.saison === "" || item.saison === filters.saison) &&
         (filters.niveau === "" || item.niveau === filters.niveau) &&
+        (filters.passe === "" || item.passe === filters.passe) &&
         (filters.prixMin === "" || item.prix >= parseInt(filters.prixMin)) &&
         (filters.prixMax === "" || item.prix <= parseInt(filters.prixMax)) &&
         (filters.ageMin === "" || item.age >= parseInt(filters.ageMin)) &&
@@ -63,11 +66,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Tableau de Bord Interactif</h1>
-      <FilterBar filters={filters} setFilters={setFilters} />
-      <PriceIndicator data={dashboardData} />
-      <DashboardCharts data={dashboardData} />
-      <pre>{JSON.stringify(dashboardData, null, 2)}</pre>
+      <header>
+        <h1>Tableau de Bord Interactif</h1>
+      </header>
+      <div className="content">
+        <aside className="sidebar">
+          <FilterBar filters={filters} setFilters={setFilters} />
+        </aside>
+        <main className="main-content">
+          <PriceIndicator data={dashboardData} />
+          <DashboardCharts data={dashboardData} />
+          <div className="data-display">
+            <h3>Données Filtrées</h3>
+            <DataTable data={dashboardData} />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
