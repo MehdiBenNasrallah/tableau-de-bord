@@ -3,6 +3,7 @@ import data from "./data/database.json";
 import FilterBar from "./components/FilterBar";
 import PriceIndicator from "./components/PriceIndicator";
 import DashboardCharts from "./components/DashboardCharts";
+import "./App.css";
 
 function App() {
   const [dashboardData, setDashboardData] = useState([]);
@@ -33,6 +34,32 @@ function App() {
     });
     setDashboardData(filteredData);
   }, [filters]);
+
+  // j'ai créer cette logique de mise à jour automatique des données pour simuler une mise à jour des données en temps réel
+  // mais la logique serait différente si je devais lier le dashboard à une API
+  // Mise à jour automatique des données
+  useEffect(() => {
+    const updateDataAutomatically = () => {
+      setDashboardData((prevData) => {
+        const newData = [...prevData];
+        // const randomIndex = Math.floor(Math.random() * newData.length);
+
+        // Mise à jour aléatoire du prix pour le premier élément
+        newData[0] = {
+          ...newData[0],
+          prix: Math.floor(Math.random() * 500), // Nouveau prix aléatoire entre 0 et 500
+        };
+
+        return newData;
+      });
+    };
+
+    // Exécuter `updateDataAutomatically` toutes les 10 secondes
+    const interval = setInterval(updateDataAutomatically, 10000);
+
+    // Nettoyage de l'intervalle à la destruction du composant
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="App">
